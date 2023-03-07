@@ -1,12 +1,14 @@
 //this includes the vehicle class as a module
-const VehicleModule = require("./vehicle.js")
+// const VehicleModule = require("./vehicle.js")
+
+import {Vehicle} from "./vehicle.js";
 
 //this shows how to call from this module...
-let v = new VehicleModule.Vehicle("Mecury", "Sedan", "1965", "color", "mileage");
-console.log(v.make)
+// let v = new VehicleModule.Vehicle("Mecury", "Sedan", "1965", "color", "mileage");
+// console.log(v.make)
 
-class mercurySedan extends VehicleModule{
-    constructor(make, model, year, color, mileage, maximumPassengers, passengers, numberOfWheels, maximumSpeed, fuel, scheduleService){
+class mercurySedan extends Vehicle{
+    constructor(make, model, year, color, mileage){
         super(make, model, year, color, mileage)
         this.maximumPassengers = 5
         this.passengers = 0
@@ -14,6 +16,7 @@ class mercurySedan extends VehicleModule{
         this.maximumSpeed = 160
         this.fuel = 10
         this.scheduleService = false
+        this.started = false
     }
 
     loadPassenger(num){
@@ -22,10 +25,12 @@ class mercurySedan extends VehicleModule{
 
     start(){
         if(this.fuel > 0){
-            return started === true
+            console.log(`${this.make} ${this.model} roars!!`)
+            return this.started === true
         }
         else{
-            return started === false
+            console.log('Add fuel')
+            return this.started === false
         }
     }
 
@@ -38,3 +43,7 @@ class mercurySedan extends VehicleModule{
         }
     }
 }
+
+let newSedan = new mercurySedan("Mecury", "Sedan", "1965", "Blue", 50000)
+
+newSedan.start()
