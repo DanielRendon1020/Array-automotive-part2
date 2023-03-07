@@ -15,7 +15,7 @@ class mercurySedan extends Vehicle{
         this.numberOfWheels = 4
         this.maximumSpeed = 160
         this.fuel = 10
-        this.scheduleService = false
+        this.timeForMaintenance = false
         this.started = false
     }
 
@@ -36,14 +36,18 @@ class mercurySedan extends Vehicle{
 
     scheduleService(mileage){
         if(mileage > 30000){
-            return timeForMaintenance === true
+            console.log('Get it in the shop ASAP!')
+            return this.timeForMaintenance === true
         }
         else{
-            return timeForMaintenance === false
+            console.log('It is all good mechanically')
+            return this.timeForMaintenance === false
         }
     }
 }
 
-let newSedan = new mercurySedan("Mecury", "Sedan", "1965", "Blue", 50000)
+let newSedan = new mercurySedan("Mecury", "Sedan", "1965", "Blue")
 
 newSedan.start()
+newSedan.typeOfVehicle(4)
+newSedan.scheduleService(50000)
